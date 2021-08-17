@@ -14,3 +14,13 @@ function fa_woocommerce_package_rates( $rates, $package ) {
 
   return $rates;
 }
+
+
+/*Pula a página do carrinho - Woocommerce */
+
+add_filter('add_to_cart_redirect', 'ql_skip_cart_page');
+	function ql_skip_cart_page () {
+	 global $woocommerce;
+	 $redirect_checkout = $woocommerce->cart->get_checkout_url();
+	 return $redirect_checkout;
+	}
